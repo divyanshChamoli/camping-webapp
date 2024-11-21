@@ -1,5 +1,5 @@
 import { Express } from "express"
-import { job } from "./cron"
+// import { job } from "./cron"
 // import 'dotenv/config'
 require('dotenv').config()
 const express= require("express")
@@ -24,7 +24,7 @@ const port=process.env.PORT || 3000
 //     // res.setHeader('Access-Control-Allow-Credentials', 1);
 //     next();
 // });
-job.start();
+// job.start();
 app.use(cors())
 app.use(express.json())
 app.use("/camp",campRouter)
