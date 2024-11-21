@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ReactMapGL, { Marker, NavigationControl, Popup, FullscreenControl} from "react-map-gl"
 import { Tent } from "lucide-react"
 import axios from "../api/axios";
+import { Spinner } from "@material-tailwind/react";
 
 const mapBoxAccessToken = "pk.eyJ1IjoiZGl2eWFuc2gwMDgiLCJhIjoiY2xnMmtrNm50MDBlajNscXlmbTJzdHl1MCJ9.-UvFiDZ4Z83OYJ9y3mZYew"
 
@@ -47,7 +48,12 @@ export default function MapGlobe(){
     return(
         // h,w are compulsory here, otherwise map wont render, Cant give inherit, auto etc. Has to be a hardcoded value
         <div className="h-[30rem] w-5/6">
-            {loading ? <>Loading...</> :
+            {loading ? <div className="flex justify-center items-center gap-4">
+                    <div className="text-black text-4xl font-semibold font-montserrat">
+                        Loading All Camps 
+                    </div>
+                    <Spinner className="h-10 w-10"/>
+                </div> :
                 <ReactMapGL  initialViewState={viewPort} mapboxAccessToken={mapBoxAccessToken} 
                     mapStyle="mapbox://styles/mapbox/dark-v11" 
                 >
